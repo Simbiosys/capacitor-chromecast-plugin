@@ -1,0 +1,38 @@
+# Archivos de compilación
+*.class
+*.war
+*.ear
+*.jar
+
+# Dependencias y directorios de dependencias
+/node_modules
+/bower_components
+/vendor
+
+# Archivos generados por IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Archivos de compilación de Java
+/target/
+/build/
+
+# Archivos de registro y caché
+/logs/
+/cache/
+
+# Archivos sensibles
+*.env
+*.pem
+
+# Otros archivos y directorios generados
+/.DS_Store
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+/coverage/
+/dist/

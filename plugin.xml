@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-chromecast-plugin"
+    version="1.0.0">
+  <name>ChromecastPlugin</name>
+  <description>Cordova Chromecast Plugin</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova,chromecast</keywords>
+
+  <js-module src="www/chromecast.js" name="ChromecastPlugin">
+    <clobbers target="chromecast" />
+  </js-module>
+
+  <!-- android -->
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="ChromecastPlugin" >
+        <param name="android-package" value="es.simbiosys.cordova.plugin.chromecast.ChromecastPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <meta-data
+        android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+        android:value="es.simbiosys.cordova.plugin.chromecast.CastOptionsProvider" />
+    </config-file>
+
+    <!-- Source files -->
+    <source-file src="src/android/ChromecastPlugin.java" target-dir="src/es/simbiosys/cordova/plugin/chromecast" />
+    <source-file src="src/android/CastOptionsProvider.java" target-dir="src/es/simbiosys/cordova/plugin/chromecast" />
+
+    <!-- android dependencies -->
+    <framework src="androidx.mediarouter:mediarouter:1.3.1" />
+    <framework src="com.google.android.gms:play-services-cast-framework:21.3.0" />
+  </platform>
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="ChromecastPlugin">
+        <param name="ios-package" value="ChromecastPlugin" />
+      </feature>
+    </config-file>
+
+    <source-file src="src/ios/ChromecastPlugin.swift" />
+
+    <header-file src="src/ios/ChromecastPlugin-Bridging-Header.h"/>
+
+    <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+  </platform>
+</plugin>
